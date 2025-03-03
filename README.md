@@ -17,19 +17,17 @@ the comparison.
 The processor is a 5-stage pipeline that supports a small number of classical
 instructions. Note that jumps are not implemented.
 
- | ADD      80 | rw | r1 | r2 | # regs[rw] = regs[r1] + regs[r2]
- | SUB      81 | rw | r1 | r2 | # regs[rw] = regs[r1] - regs[r2]
- | AND      82 | rw | r1 | r2 | # regs[rw] = regs[r1] && regs[r2]
-
- | ALO      83 | rw | imm     | # regs[rw] = imm
- | AHI      84 | rw | imm     | # regs[rw] = imm << 16
-
- | RDL      90 | rw | r1 | ?? | # regs[rw] = data[regs[r1]]
-
- | WRL      a0 | ?? | r1 | r2 | # data[regs[r1]] = regs[r2]
-
- | DUMP     01 | ?? | ?? | ?? | #
- | FINISHED ff | ?? | ?? | ?? | #
+| OP          | rw | r1 | r2 | Semantic                          |
+|-------------|----|----|----|-----------------------------------|
+| ADD      80 | rw | r1 | r2 | # regs[rw] = regs[r1] + regs[r2]  |
+| SUB      81 | rw | r1 | r2 | # regs[rw] = regs[r1] - regs[r2]  |
+| AND      82 | rw | r1 | r2 | # regs[rw] = regs[r1] && regs[r2] |
+| ALO      83 | rw | imm     | # regs[rw] = imm                  |
+| AHI      84 | rw | imm     | # regs[rw] = imm << 16            |
+| RDL      90 | rw | r1 | ?? | # regs[rw] = data[regs[r1]]       |
+| WRL      a0 | ?? | r1 | r2 | # data[regs[r1]] = regs[r2]       |
+| DUMP     01 | ?? | ?? | ?? | #                                 |
+| FINISHED ff | ?? | ?? | ?? | #                                 |
 
 ## Cache strategies
 

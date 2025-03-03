@@ -185,53 +185,6 @@ module Data_Cache(
 		end
 	end
 
-/*
-
-
-
-
-
-
-
-		end else if (state == 3'b000 && access != ACCESS_NONE && !cache_has_data) begin
-			memory_access = access;
-			memory_address = address;
-			state = 3'b001;
-		end else if (state == 3'b000 && access != ACCESS_NONE && cache_has_data) begin
-			read_data = cache_data;
-			state = 3'b100;
-		end else if (state == 3'b001 && memory_busy) begin
-			memory_access = ACCESS_NONE;
-			state = 3'b010;
-		end else if (state == 3'b010 && !memory_busy) begin
-			read_data_aux = memory_read_line[address[3:2]];
-			read_line_aux = memory_read_line;
-			state = 3'b011;
-		end else if (state == 3'b011) begin
-			read_data = read_data_aux;
-			case (cache_set_index)
-				2'b00: `UPDATE_CACHE(0)
-				2'b01: `UPDATE_CACHE(2)
-				2'b10: `UPDATE_CACHE(4)
-				2'b11: `UPDATE_CACHE(6)
-			endcase
-			state = 3'b100;
-		end else if (state == 3'b100) begin
-			// used to let the instruction going from ex to mem.
-			// otherwise, this instruction is executed twice...
-			state = 3'b000;
-		end
-	end
-
-	always_ff @(negedge clock) begin
-		if (!reset) begin
-			for (int i = 0; i < 8; i = i + 1) begin
-				$display("cache[%1d]: valid=%1d tag=%08x date=%08x", i, cache[i].valid, cache[i].tag, cache[i].date);
-			end
-		end
-	end
-*/
-
 	logic cache_0_valid;
 	logic cache_1_valid;
 	logic cache_2_valid;

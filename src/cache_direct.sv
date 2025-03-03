@@ -83,12 +83,6 @@ module Data_Cache(
 			memory_access = ACCESS_NONE;
 			state = 4'b0000;
 
-		// used to deactivate cache
-		/*end else if (state == 4'b0000 && access != ACCESS_NONE) begin
-			memory_access = access;
-			memory_address = address;
-			state = 4'b0001;*/
-
 		// write and cache has data: just update
 		end else if (state == 4'b0000 && access == ACCESS_WRITE && cache_has_data) begin
 			memory_access = access;

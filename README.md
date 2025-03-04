@@ -66,6 +66,10 @@ For instance, to simulate sequential memory access, the following program can be
 - `clean.sh`: delete generated files
 - `execute.sh`: compile the project and execute the comparison
 
+## Verilator command
+
+`verilator -Isrc -DVCD='"empty"' --binary src/*`
+
 ## Important note
 
 This project was completed in just a few days for testing purposes and is

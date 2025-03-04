@@ -57,7 +57,7 @@ module Stage_Decode(
 			stage_id.r2 <= instruction_r2;
 			stage_id.rw <= instruction_rw;
 			stage_id.imm <= instruction_imm;
-			casex (instruction_operation)
+			case (instruction_operation)
 				ADD, SUB, AND, WRL, RDL:
 					begin
 						stage_id.v1 <= v1;
@@ -65,8 +65,8 @@ module Stage_Decode(
 					end
 				default:
 					begin
-						stage_id.v1 <= instruction_r1;
-						stage_id.v2 <= instruction_r2;
+						stage_id.v1 <= {24'h000000, instruction_r1};
+						stage_id.v2 <= {24'h000000, instruction_r2};
 					end
 			endcase
 		end else if (!stall) begin

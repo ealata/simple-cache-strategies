@@ -35,10 +35,10 @@ module Memory_Line(
 		end else if (counter != 8'h00) begin
 			if (counter == 8'h01) begin
 				if (save_access == ACCESS_WRITE) begin
-					memory[address[11:4]] = input_line;
+					memory[address[12:4]] = input_line;
 					output_line = input_line;
 				end else if (save_access == ACCESS_READ) begin
-					output_line = memory[address[31:4]];
+					output_line = memory[address[12:4]];
 				end
 				state = 1'b0;
 				save_address = 32'h00000000;
@@ -56,7 +56,7 @@ module Memory_Line(
 		if (debug == DUMP) begin
 			$display("[?] data memory dump (non zero values):");
 			for (int i = 0; i < 2048; i = i + 1) begin
-				if (memory[i] != 32'h00000000) begin
+				if (memory[i] != {4{32'h00000000}}) begin
 					$display("[?] data_memory[%4d] = %h", i, memory[i]);
 				end
 			end

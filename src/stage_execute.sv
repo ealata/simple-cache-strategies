@@ -27,7 +27,7 @@ module Stage_Execute(
 			`stage_flush(stage_ex);
 		end else if (!stall) begin
 			stage_ex <= stage_id;
-			casex (stage_id.operation)
+			case (stage_id.operation)
 				ADD, SUB, AND:	stage_ex.result <= result;
 				ALO:		stage_ex.result <= { 16'h0000 , stage_id.imm };
 				AHI:		stage_ex.result <= { stage_id.imm , 16'h0000 };

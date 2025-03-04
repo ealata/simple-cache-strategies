@@ -10,7 +10,7 @@ module Instruction_Memory(
 
 	V32 memory [2047:0];
 	initial $readmemh(`CODE, memory, 0, 2047);
-	assign instruction = memory[address[11:2]];
+	assign instruction = memory[address[12:2]];
 
 endmodule
 

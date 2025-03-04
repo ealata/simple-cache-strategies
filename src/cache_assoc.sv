@@ -24,15 +24,15 @@ module Data_Cache(
 	// note: lines are grouped in sets, 2 lines per set
 	// note: the line_index needs 2 bits
 	// note: the tag corresponds to the remain bits (32 - 2 - 4 = 26)
-	// tag     | line_index | offset
-	// 26 bits | 2 bits     | 4 bits
+	// tag     | set_index | offset
+	// 26 bits | 2 bits    | 4 bits
 
 	t_cache_entry [7:0] cache;
 
 	V4 state;
 	V32 date;
 
-	V3 cache_set_index;
+	V2 cache_set_index;
 	logic cache_line_index;
 	V32 cache_tag;
 	V2 cache_offset;
@@ -55,7 +55,7 @@ module Data_Cache(
 	t_line read_line_aux;
 
 	assign cache_set_index = address[5:4];
-	assign cache_tag = address[31:6];
+	assign cache_tag = {6'b000000, address[31:6]};
 	assign cache_offset = address[3:2];
 	assign cache_entry0 = cache[{ cache_set_index , 1'b0 }];
 	assign cache_entry1 = cache[{ cache_set_index , 1'b1 }];
@@ -126,7 +126,7 @@ module Data_Cache(
 	always @(posedge clock) begin
 		date = date + 1;
 		if (reset) begin
-			cache = {8{ 1'b0 , 32'h00000000 , 8'h00 , {128{1'b0}} }};
+			cache = {8{ 1'b0 , 32'h00000000 , 32'h00 , {128{1'b0}} }};
 			memory_access = ACCESS_NONE;
 			date = 0;
 			state = 4'b0000;

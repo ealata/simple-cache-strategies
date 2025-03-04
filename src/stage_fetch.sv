@@ -35,8 +35,8 @@ module Stage_Fetch(
 			stage_if.instruction <= instruction;
 			// The next assignments are needed for hazard processing
 			stage_if.operation <= instruction[31:24];
-			stage_if.r1 = instruction[15:8];
-			stage_if.r2 = instruction[7:0];
+			stage_if.r1 <= instruction[15:8];
+			stage_if.r2 <= instruction[7:0];
 		end
 	end
 

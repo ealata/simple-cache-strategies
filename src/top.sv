@@ -16,8 +16,8 @@ module Testbench;
 		$dumpfile(`VCD);
 		$dumpvars(0, u_cpu);
 
-		reset <= 1; #10
-		reset <= 0; //#64
+		reset = 1; #10
+		reset = 0; //#64
 		while (!finished) begin #1; end
 		$stop;
 	end
